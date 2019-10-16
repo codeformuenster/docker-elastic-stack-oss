@@ -1,1 +1,1 @@
-# docker-elastic-stack-oss
+# elasticsearch-oss-plugins
