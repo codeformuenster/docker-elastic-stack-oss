@@ -9,18 +9,16 @@ RUN elasticsearch-plugin list \
     https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-alerting/opendistro_alerting-1.2.0.0.zip \
   && elasticsearch-plugin install --silent \
     https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-sql/opendistro_sql-1.2.0.0.zip \
-  && elasticsearch-plugin install --silent --batch \
-    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/performance-analyzer/opendistro_performance_analyzer-1.2.0.0.zip \
+#  && elasticsearch-plugin install --silent --batch \
+#    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/performance-analyzer/opendistro_performance_analyzer-1.2.0.0.zip \
   && elasticsearch-plugin list
 
+# opendistro_security needs some certs like:
+# /usr/share/elasticsearch/config/root-ca.pem
+# /usr/share/elasticsearch/config/node-key.pem
+# /usr/share/elasticsearch/config/node.pem
 
-# https://opendistro.github.io/for-elasticsearch-docs/docs/security-configuration/security-admin/
-# https://github.com/opendistro-for-elasticsearch/security/blob/master/securityconfig/config.yml
-#
-# /usr/share/elasticsearch/jdk/bin/java \
-#   -Dorg.apache.logging.log4j.simplelog.StatusLogger.level=OFF \
-#   -cp /usr/share/elasticsearch/plugins/opendistro_security/*:/usr/share/elasticsearch/lib/*:/usr/share/elasticsearch/plugins/opendistro_security/deps/* \
-#   com.amazon.opendistroforelasticsearch.security.tools.OpenDistroSecurityAdmin
-#
-# Open Distro Security Admin v7
-# ERR: Parsing failed.  Reason: Specify at least -ks or -cert
+# opendistro_performance_analyzer needs special settings for elasticsearch:
+# -Djava.security.policy=file:///usr/share/elasticsearch/plugins/opendistro_performance_analyzer/pa_config/es_security.policy 
+# -Dclk.tck=100 
+# -Djdk.attach.allowAttachSelf=true
