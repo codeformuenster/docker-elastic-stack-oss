@@ -1,16 +1,16 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch-oss:7.2.0
+FROM docker.elastic.co/elasticsearch/elasticsearch-oss:7.2.1
 
 # https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/
 
 RUN elasticsearch-plugin list \
   && elasticsearch-plugin install --silent --batch \
-    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-security/opendistro_security-1.2.0.0.zip \
+    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-security/opendistro_security-1.2.1.0.zip \
   && elasticsearch-plugin install --silent --batch \
-    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-alerting/opendistro_alerting-1.2.0.0.zip \
+    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-alerting/opendistro_alerting-1.2.1.0.zip \
   && elasticsearch-plugin install --silent \
-    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-sql/opendistro_sql-1.2.0.0.zip \
+    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/opendistro-sql/opendistro_sql-1.2.1.0.zip \
   && elasticsearch-plugin install --silent --batch \
-    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/performance-analyzer/opendistro_performance_analyzer-1.2.0.0.zip \
+    https://d3g5vo6xdbdb9a.cloudfront.net/downloads/elasticsearch-plugins/performance-analyzer/opendistro_performance_analyzer-1.2.1.0.zip \
   && elasticsearch-plugin list
 
 
